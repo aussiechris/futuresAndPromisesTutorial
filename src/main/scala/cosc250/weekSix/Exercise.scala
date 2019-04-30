@@ -53,7 +53,7 @@ object Exercise {
   /**
     * Here's an example of parsing a JSON string
     */
-  def nameFromJason() = {
+  def nameFromJason(): String = {
     val json2: JsValue = Json.parse(
       """
       {
@@ -83,15 +83,15 @@ object Exercise {
   /*
    * This stuff sets up our web client
    */
-  implicit val system = ActorSystem("Sys")
-  implicit val materializer = ActorMaterializer()
+  implicit val system: ActorSystem = ActorSystem("Sys")
+  implicit val materializer: ActorMaterializer = ActorMaterializer()
   val wsClient: AhcWSClient = AhcWSClient()
 
 
   /**
     * Here's an example of using the Web Client.
     */
-  def webExample() = {
+  def webExample(): Future[String] = {
     wsClient
       .url("http://turing.une.edu.au/~cosc250/lectures/cosc250/test.txt")
       .get()
